@@ -9,7 +9,8 @@
 #include "SFML/Graphics/RenderTarget.hpp"
 
 Entity::Entity(const sf::Texture* texture, World &world) : _world(world) {
-    // construire son sprite
+    // initialize your sprite with the texture
+    // AssetsManager could be used in inherited classes
 }
 
 void Entity::draw(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -24,7 +25,6 @@ sf::Vector2f Entity::getPosition() const {
     return _sprite->getPosition();
 }
 
-
 void Entity::setRotation(const sf::Angle &rot) {
     _sprite->setRotation(rot);
 }
@@ -37,5 +37,7 @@ sf::FloatRect Entity::getGlobalBounds() const {
     return _sprite->getGlobalBounds();
 }
 
-void Entity::onColliding(const Entity &other) {}
+void Entity::onColliding(const Entity &other) {
+    // callback upon collision detection
+}
 

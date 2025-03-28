@@ -20,6 +20,7 @@ public:
     void onColliding(const Entity &other) override;
 
 private:
+    // destroy this asteroid
     void destroy();
 };
 

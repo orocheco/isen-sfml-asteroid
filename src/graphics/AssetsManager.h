@@ -13,7 +13,6 @@
 #include "SFML/Audio/Music.hpp"
 #include "SFML/Audio/Sound.hpp"
 
-
 class AssetsManager {
 private:
   std::map<std::string, std::shared_ptr<sf::Font>> _fonts;

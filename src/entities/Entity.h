@@ -35,7 +35,6 @@ public:
     virtual void processEvents() = 0;
     /// tells whether this entity shall be destroyed or not
     [[nodiscard]] virtual bool isAlive() const { return _alive; }
-
     /// sets the position of this entity
     virtual void setPosition(const sf::Vector2f &pos);
     /// gets the position of this entity

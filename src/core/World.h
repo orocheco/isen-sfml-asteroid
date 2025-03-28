@@ -20,19 +20,17 @@ private:
     /// notre vecteur d'entités
     std::vector<Entity*> _entities;
 
-
 public:
     /// Our world
     explicit World(sf::Vector2f size);
     /// Destructor
     ~World() override;
-
     /// Update
     void update(sf::Time dt);
     /// process events
     void processEvents();
+    /// initialization
     void initialize();
-
     /// Manage our world
     void add(Entity* entity);
     /// remove entity

@@ -25,6 +25,7 @@ void World::initialize() {
 
 void World::update(const sf::Time dt) {
 
+    // update alive entities
     for (const auto entity: _entities) {
 
         if (entity->isAlive()) {
@@ -33,14 +34,18 @@ void World::update(const sf::Time dt) {
         }
     }
 
+    // detect collisions
     checkCollisions();
 
     // merge new entities > entities
     mergeEntities();
 
+    // remove dead entities from vector
+    // removeDeadEntities()
 }
 
 void World::processEvents() {
+    // forward events to entities
     for (const auto entity: _entities) {
         if (entity->isAlive()) {
             entity->processEvents();
@@ -49,6 +54,7 @@ void World::processEvents() {
 }
 
 void World::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    // draw entities
     for (const auto entity: _entities) {
         if (entity->isAlive()) {
             target.draw(*entity, states);
@@ -56,10 +62,12 @@ void World::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     }
 }
 
+// add entity to this world
 void World::add(Entity *entity) {
     _entities_queue.push_back(entity);
 }
 
+// remove entity from this world
 void World::remove(const Entity *entity) {
     // C++20
     std::erase(_entities, entity);
@@ -68,9 +76,9 @@ void World::remove(const Entity *entity) {
 
 
 void World::checkCollisions() {
-
+    // detect collisions between entitites
 }
 
 void World::mergeEntities() {
-
+    // merge _entities_queue into _entities
 }

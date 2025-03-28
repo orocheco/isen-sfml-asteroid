@@ -1,0 +1,76 @@
+@startuml
+
+class Engine {
+    - sf::Vector2f _size
+    - sf::RenderWindow _window
+    - World _world
+    + Engine(sf::Vector2f size)
+    + ~Engine()
+    + void initialize()
+    + void run()
+    + void setSize(sf::Vector2f size)
+    + sf::Vector2f getSize() const
+    - void update(const sf::Time& elapsed)
+    - void draw()
+    - void processEvents()
+}
+
+class World {
+    - std::vector<Entity*> _entities_queue
+    - std::vector<Entity*> _entities
+    + World(sf::Vector2f size)
+    + ~World()
+    + void update(sf::Time dt)
+    + void processEvents()
+    + void initialize()
+    + void add(Entity* entity)
+    + void remove(const Entity * entity)
+    - void draw(sf::RenderTarget &target, sf::RenderStates states) const
+    - void checkCollisions()
+    - void mergeEntities()
+}
+
+class Entity {
+    # World& _world
+    # sf::Sprite* _sprite
+    # bool _alive
+    + Entity(const sf::Texture* texture, World& world)
+    + virtual ~Entity()
+    + virtual void update(sf::Time deltaTime) = 0
+    + virtual void processEvents() = 0
+    + virtual bool isAlive() const
+    + virtual void setPosition(const sf::Vector2f &pos)
+    + virtual sf::Vector2f getPosition() const
+    + virtual void setRotation(const sf::Angle &rot)
+    + virtual sf::Angle getRotation() const
+    + virtual sf::FloatRect getGlobalBounds() const
+    + virtual bool isCollidingWith(const Entity &other) = 0
+    + virtual void onColliding(const Entity &other)
+    - void draw(sf::RenderTarget &target, sf::RenderStates states) const
+}
+
+class SpaceShip {
+    - float _velocity
+    - float _acceleration
+    + SpaceShip(const sf::Texture* texture, World& world)
+    + ~SpaceShip()
+    + void update(sf::Time dt)
+    + void processEvents()
+    + void move(sf::Vector2f offset)
+    + void rotate(float direction)
+    + void accelerate()
+    + void decelerate()
+    + void shoot(float speed)
+    + float getVelocity() const
+    + float getAcceleration() const
+    + sf::Vector2f getDirection() const
+    + bool isCollidingWith(const Entity &other)
+    + void onColliding(const Entity &other)
+}
+
+Entity <|-- World
+World *-- "many" Entity
+Engine *-- World
+Entity <|-- SpaceShip
+
+@enduml

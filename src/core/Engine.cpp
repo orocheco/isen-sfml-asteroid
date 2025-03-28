@@ -50,13 +50,13 @@ void Engine::run() {
 }
 
 void Engine::update(const sf::Time &elapsed) {
-
+    // update your world
 }
 
 void Engine::draw() {
-
+    // draw your world
 }
 
 void Engine::processEvents() {
-
+    // power up your world with events
 }

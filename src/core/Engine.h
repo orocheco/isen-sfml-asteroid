@@ -31,8 +31,9 @@ public:
     void initialize();
     /// start the game
     void run();
-
+    /// sets the size
     void setSize(sf::Vector2f size) { _size = size; }
+    /// gets the size
     sf::Vector2f getSize() const { return _size; }
 
 
