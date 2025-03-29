@@ -13,11 +13,17 @@
 
 #include "entities/Entity.h"
 
+
+/**
+ * @brief The World component handles entity management and rendering them on the screen.
+ * @authors O. Rochecouste
+ */
+
 class World final : public sf::Drawable {
 private:
-    /// vecteur temporaire utilisé pour ajouter les nouvelles entités
+    /// temporary vector
     std::vector<Entity*> _entities_queue;
-    /// notre vecteur d'entités
+    /// Populate our world with entities
     std::vector<Entity*> _entities;
 
 public:

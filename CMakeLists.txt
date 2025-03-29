@@ -21,6 +21,7 @@ add_executable(IsenShooter
         src/entities/Entity.cpp
         src/entities/SpaceShip.cpp
         src/entities/Asteroid.cpp
+        src/entities/Projectile.cpp
         src/ui/UiComponent.cpp
 )
 
